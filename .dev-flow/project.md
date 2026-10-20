@@ -18,6 +18,7 @@ forge = github
 ## implement
 
 ```flow
+test = bun test
 ```
 
 <!-- optional tier-1: add a flow-check 'health' block once the app exposes a health endpoint -->
@@ -31,11 +32,10 @@ forge = github
 <!-- e.g. review policy, docs expectations, who picks the version -->
 
 ```flow
-versionFile = package.json
+versionFile = VERSION
 versionTag = v{version}
 ```
 
 ## release
 
 <!-- e.g. PR/merge/tag policy, who publishes artifacts -->
-
