@@ -31,11 +31,12 @@ ip and drops the claim (label still shows). An operator pin in the ollamaMQ UI a
 ## Install
 
 ```
-mkdir -p ~/.pi/agent/extensions/pi-session
-cp index.ts ~/.pi/agent/extensions/pi-session/index.ts
+pi install https://github.com/dmarchevsky/pi-session
 ```
 
-Dev loop: `pi --extension ./index.ts`. No dependencies (`package.json` not needed).
+Or copy the single file: `mkdir -p ~/.pi/agent/extensions/pi-session && cp index.ts ~/.pi/agent/extensions/pi-session/index.ts`.
+Dev loop: `pi --extension ./index.ts`. No dependencies; `package.json` is the package manifest
+and the single version source (`pi list` reads it — keep it in sync with the tag at release).
 
 ## Cautions
 
