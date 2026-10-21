@@ -1,6 +1,6 @@
 import { expect, test } from "bun:test";
 import { existsSync, readFileSync } from "node:fs";
-import { dirname, resolve } from "node:path";
+import { resolve } from "node:path";
 import { firstWords, lastPrio, parseLevel, slugify } from "./index.ts";
 
 // Regression: pi only discovers package resources via the `pi` manifest or
