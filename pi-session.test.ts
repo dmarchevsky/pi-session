@@ -1,5 +1,16 @@
 import { expect, test } from "bun:test";
+import { existsSync, readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { firstWords, lastPrio, parseLevel, slugify } from "./index.ts";
+
+// Regression: pi only discovers package resources via the `pi` manifest or
+// conventional dirs; without one the package installed but loaded nothing.
+test("package.json declares the pi manifest so the extension is discovered", () => {
+  const pkg = JSON.parse(readFileSync(new URL("./package.json", import.meta.url), "utf8"));
+  const exts = pkg.pi?.extensions;
+  expect(Array.isArray(exts)).toBe(true);
+  for (const e of exts) expect(existsSync(resolve(import.meta.dir, e))).toBe(true);
+});
 
 test("slugify strips emoji and punctuation", () => {
   expect(slugify("Fix 🐛 login!!")).toBe("fix-login");

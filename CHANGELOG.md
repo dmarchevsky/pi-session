@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2 — 2026-10-21
+
+- Fix package loading: declare the `pi` manifest (`pi.extensions: ["./index.ts"]`) in `package.json`. Without it pi discovered no resources from the installed package — it showed as installed but the extension never loaded.
+
 ## 0.1.1 — 2026-10-21
 
 - Add `package.json` manifest: `pi install <git-url>` packages report their version from it (`pi list` showed "unknown").
