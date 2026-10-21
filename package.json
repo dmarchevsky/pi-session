@@ -3,5 +3,8 @@
   "version": "0.1.1",
   "description": "Expose a pi session to ollamaMQ: stable session id, readable label, /prio priority",
   "keywords": ["pi-package"],
+  "pi": {
+    "extensions": ["./index.ts"]
+  },
   "license": "MIT"
 }
