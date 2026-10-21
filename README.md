@@ -12,7 +12,9 @@ three headers on every provider request and one command.
 
 Slug ladder (first match wins, re-derived on change): session name → first 4 words of the first
 user message → `basename(cwd)` → `session`. If no name is set, the slug is also written as the
-session name once, so `/resume` shows readable names.
+session name once, so `/resume` shows readable names. When the first-message upgrade fires on an
+auto-set name, the session is renamed to the new slug — the shown name and `x-session-name` always
+match; a user-set name is never overwritten.
 
 ## Usage
 

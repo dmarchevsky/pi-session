@@ -106,7 +106,16 @@ export default function (pi: ExtensionAPI) {
     if (!t) return;
     slugUpgraded.add(id);
     const w = firstWords(t);
-    if (w) slug.set(id, w);
+    if (!w) return;
+    slug.set(id, w);
+    // The UI name must not lag the header slug: rename along with the upgrade, but only
+    // while the name is still our own auto-label (a user rename sets slugNamed above and
+    // never reaches here). autoName is set first so session_info_changed doesn't mis-mark
+    // this rename as user-set.
+    if (autoName.get(id) === ctx.sessionManager.getSessionName()) {
+      autoName.set(id, w);
+      pi.setSessionName(w);
+    }
   });
 
   pi.on("before_provider_headers", (ev, ctx) => {
