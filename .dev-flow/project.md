@@ -32,9 +32,11 @@ test = bun test
 <!-- e.g. review policy, docs expectations, who picks the version -->
 
 ```flow
-versionFile = VERSION
+versionFile = package.json
 versionTag = v{version}
 ```
+
+package.json is the single version source — the release bump, the tag and `pi list`/`pi update` all read the same file; never add a separate VERSION file.
 
 ## release
 
